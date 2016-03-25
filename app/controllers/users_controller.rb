@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
 
   post '/signup' do
-    @user = User.new(params)
+    @user = User.new(username: params[:username], password: params[:password])
     if @user.save
       session[:user_id] = @user.id
       redirect to '/users/:id'
@@ -32,12 +32,11 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
-    user = User.find_by(username: params[:username])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
+    login(params[:username], params[:password])
+    if logged_in?
       redirect '/users/:id'
     else
-      redirect '/login'
+      error message and redirect '/login'
     end
   end
 
