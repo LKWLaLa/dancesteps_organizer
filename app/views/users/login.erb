@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dance Steps | Login</title>
+</head>
+<body>
+<% unless locals.empty? %>
+<div class="alert alert-info" role="alert"><%= message %></div>
+<br><br>
+<% end %>
+
+
+
+<form method="post" action="/login" class="navbar-form navbar-left">
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input type="text" id="username" class="form-control" name="username"></input><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" class="form-control" name="password"><br><br>
+  </div>
+  <input type="submit" class="btn btn-info" value="Log In">
+</form>
+  
+</body>
+</html>

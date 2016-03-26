@@ -10,9 +10,11 @@ class UsersController < ApplicationController
 
   get '/users/:id' do
     if logged_in?
+      @current_user = current_user
       erb :'users/show'
     else
-      erb :'/users/new', locals: {message: "Oops! You must be logged in to view this page."}
+      redirect to '/login'
+    end
   end
 
   get '/logout' do
@@ -31,7 +33,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect to '/users/:id'
     else
-      erb :'/users/new', locals: {message: "Oops! Something went wrong. Please enter a username and password to sign up."}
+      erb :'/users/new', locals: {message: "Oops! Something went wrong. Please fill out all fields to sign up."}
     end
   end
 
@@ -40,7 +42,7 @@ class UsersController < ApplicationController
     if logged_in?
       redirect '/users/:id'
     else
-      erb :'users/login', locals: {message: "Please enter a valid username and password to log in."}
+      erb :'users/login', locals: {message: "Oops! Please enter a valid username and password to log in."}
     end
   end
 
