@@ -10,15 +10,18 @@
 <br><br>
 <% end %>
 
-<h4>Create a username and password:</h4>
+ <h4>Create a username and password:</h4>
 
-<form method="post" action="/signup">
-  <label for="username">Username:</label>
-  <input type="text" id="username" name="username"></input><br><br>
-  <label for="password">Password:</label>
-  <input type="password" id="password" name="password"><br><br>
-  <input type="submit" value="Sign Up">
+<form method="post" action="/signup" class="navbar-form navbar-left">
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"></input><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+    <input type="submit" class="btn btn-warning" value="Sign Up">
+  </div>
 </form>
+
   
 </body>
 </html>

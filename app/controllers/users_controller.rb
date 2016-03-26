@@ -40,7 +40,8 @@ class UsersController < ApplicationController
   post '/login' do
     login(params[:username], params[:password])
     if logged_in?
-      redirect '/users/:id'
+      @current_user = current_user
+      erb :'users/show'
     else
       erb :'users/login', locals: {message: "Oops! Please enter a valid username and password to log in."}
     end
