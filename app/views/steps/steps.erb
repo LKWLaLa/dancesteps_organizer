@@ -1,0 +1,25 @@
+<h3><%=current_user.username%>'s Steps:</h3>
+
+<%@steps.each do |step|%>
+
+  <ol>
+    <li>
+      <h4><%=step.name%></h4>
+      <p>
+        Styles: <%step.styles.each do |style|%>
+        <%=style.name%>
+        <%end%>
+        Current level of mastery: <%=step.level_of_mastery%><br>
+        Notes: <%=step.notes%>
+      </p>
+      <p>
+        Video Links:
+        <%step.videos.each do |video|%>
+        <li><a href="<%=video.url%>"></a></li>
+        <%end%>
+      </p>
+
+    </li>
+
+  </ol>
+  <%end%>
