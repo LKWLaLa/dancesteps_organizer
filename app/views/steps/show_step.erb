@@ -18,7 +18,7 @@
   <h4>Video Clips:</h4>
   <%@step.videos.each do |video|%>
   <ol>
-    <li><a href="<%=video.url%>"><%=video.title%> </a><%if !video.year.nil?%> (<%=video.year%>) <%end%></li>
+    <li><a href="/videos/<%=video.id%>"><%=video.title%> </a><%if !video.year.nil?%> (<%=video.year%>) <%end%> | <a href="<%=video.url%>">Watch clip</a></li>
   </ol>
   <%end%>
 
