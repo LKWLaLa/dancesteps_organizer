@@ -38,18 +38,31 @@ class StepsController < ApplicationController
   
 
   post "/steps" do
-    redirect to "/steps/new_step" if params["content"].empty?
-    @step = Step.new(content: params["content"], user_id:current_user.id)
+    redirect to "/steps/new_step" if params[:step].empty?
+    @step = Step.new(params[:step]) 
+    @step.user_id = current_user.id
     @step.save
+    @video = Video.new(params[:video])
+    @video.user_id = current_user.id
+    if @video.save
+      @video.steps << @step
+    end
     redirect to "/steps/#{@step.id}"
   end
 
   patch "/steps/:id" do
-    redirect to "/steps/#{params[:id]}/edit" if params["content"].empty?
     @step = Step.find(params[:id])
     if @step && (@step.user_id == current_user.id)
-      @step.update(content: params["content"])
+      @step.update(params[:step])
       @step.save
+
+      if !params[:video].empty?
+        @video = Video.new(params[:video])
+        @video.user_id = current_user.id
+        if @video.save
+          @video.steps << @step 
+        end     
+      end
       redirect to "/steps/#{@step.id}"
     end
   end

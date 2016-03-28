@@ -1,13 +1,13 @@
 <h3>Edit Step:</h3>
 
-<form method="post" action="/steps">
+<form method="post" action="/steps/<%=@step.id%>">
   <input type="hidden" id="hidden" name="_method" value="PATCH">
   <label for="name">Step Name:</label>
   <input type="text" name="step[name]" id="name" value="<%=@step.name%>"> <br><br>
   <label for="level_of_mastery">Current level of mastery (1-10):</label>
   <input type="text" name="step[level_of_mastery]" id="level_of_mastery" value="<%=@step.level_of_mastery%>" ><br>
   <label for="notes">Notes:</label>
-  <textarea name="step[notes]" id="notes" value="<%=@step.notes%>" cols="30" rows="5"></textarea>
+  <input type="text" name="step[notes]" id="notes" value="<%=@step.notes%>" cols="30" rows="5">
 
 
   <h4>Style:</h4>
@@ -27,10 +27,16 @@
   <h4>Associate other video clips from library:</h4>
 
     <% Video.all.each do |video| %>
-      <label><%= video.name %></label>
+      <label><%= video.title %></label>
       <input type="checkbox" id="<%=video.id%>" name="step[video_ids][]" value="<%= video.id %>"<%= 'checked' if @step.videos.include?(video)%>><br>
     <% end %> <br><br>
 
 
-  <input type="submit" value="Edit Step">
+  <input type="submit" value="Save Changes">
+</form>
+
+
+<form method="post" action="/steps/<%=@step.id%>/delete">
+  <input type="hidden" id="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Step">
 </form>

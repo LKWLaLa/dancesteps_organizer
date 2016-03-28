@@ -1,0 +1,28 @@
+<h3><%=@step.name%></h3>
+<h4>Current level of mastery: <%=@step.level_of_mastery%></h4>
+
+<p>Styles: <%@step.styles.each do |style|%>
+
+<li><%=style.name%></li>
+
+<%end%>
+
+</p>
+
+<p>
+<h4>Notes:</h4>
+  <%=@step.notes%>
+</p>
+
+<p>
+  <h4>Video Clips:</h4>
+  <%@step.videos.each do |video|%>
+  <ol>
+    <li><a href="<%=video.url%>"><%=video.title%>  </a></li>
+  </ol>
+  <%end%>
+
+</p>
+
+<button><a href="/steps/<%=@step.id%>/edit">Edit Step</a>
+</button>

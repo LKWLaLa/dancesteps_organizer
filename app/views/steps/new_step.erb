@@ -26,7 +26,7 @@
   <h4>Associate other video clips from library:</h4>
 
   <% Video.all.each do |video| %>
-      <label><%= video.name %></label>
+      <label><%= video.title %></label>
       <input type="checkbox" id="<%=video.id%>" name="step[video_ids][]" value="<%= video.id %>"><br>
     <% end %> <br><br>
 

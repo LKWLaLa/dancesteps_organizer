@@ -36,5 +36,23 @@ Style has many videos through steps
 video has many styles through steps
 
 
+To fix/add:
+
+Can't deselect video and disassociate it from step.
+Want to change id to slug?
+Need links for navigation between pages.
+Video views and controller
+CLEAN UP controller code.
+CSS for all pages.
+Index page and home page.
+video year
+time marker
+
+
+
+
+
+
+
 
 
