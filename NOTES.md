@@ -47,6 +47,7 @@ CSS for all pages.
 Index page and home page.
 video year
 time marker
+Click to watch should open a new window
 
 
 

@@ -1,0 +1,33 @@
+<h3><%=current_user.username%>'s Videos:</h3>
+
+<ol>
+
+<%@videos.each do |video|%>
+
+  
+    <li>
+      <h4><a href="/videos/<%=video.id%>"><%=video.title%></a></h4>
+      <p>
+        <a href="<%=video.url%>">Watch Video Clip</a><br><br>
+        Styles: <%video.styles.each do |style|%>
+        <%=style.name%>
+        <%end%>
+        Year: <%=video.year%><br>
+        Notes: <%=video.notes%>
+      </p>
+
+      <p>      
+        Associated Steps:
+        <ul>
+          <%video.steps.each do |step|%>
+          <li><a href="/steps/<%=step.id%>"><%=step.name%></a></li>
+          <%end%>
+        </ul>
+      </p>
+
+    </li>
+
+
+  <%end%>
+
+  </ol>

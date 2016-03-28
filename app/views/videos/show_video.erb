@@ -1,0 +1,37 @@
+<h3><%=@video.title%></h3>
+
+<h4><%if !@video.year.nil?%> (<%=@video.year%>) <%end%></h4>
+
+<p><h4>Styles:</h4>
+<%@video.styles.each do |style|%>
+  <li><%=style.name%></li>
+<%end%>
+
+<h4><a href="<%=@video.url%>">Click to Watch</a></h4>
+
+</p>
+
+<p>
+<h4>Notes:</h4>
+  <%=@video.notes%>
+</p>
+
+<p>
+  <h4>Steps:</h4>
+  <%@video.steps.each do |step|%>
+  <ol>
+    <li><a href="/steps/<%=step.id%>"><%=step.name%> </a><br>
+    Current level of mastery: <%=step.level_of_mastery%>
+      <ul>
+        <%step.styles.each do |style|%>
+
+        <li><%=style.name%></li>
+
+        <%end%>
+      </ul>
+    </li>
+  </ol>
+  <%end%>
+
+</p>
+
