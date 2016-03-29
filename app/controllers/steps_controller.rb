@@ -46,6 +46,7 @@ class StepsController < ApplicationController
     @video.user_id = current_user.id
     if @video.save
       @video.steps << @step
+      @video.save
     end
     redirect to "/steps/#{@step.id}"
   end
@@ -61,6 +62,7 @@ class StepsController < ApplicationController
         @video.user_id = current_user.id
         if @video.save
           @video.steps << @step 
+          @video.save
         end     
       end
       redirect to "/steps/#{@step.id}"
