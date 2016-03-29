@@ -1,3 +1,5 @@
+require 'pry'
+
 class VideosController < ApplicationController
 
   get '/videos' do
@@ -38,19 +40,33 @@ class VideosController < ApplicationController
   
 
   post "/videos" do
-    redirect to "/videos/new_video" if params["content"].empty?
-    @video = Video.new(content: params["content"], user_id:current_user.id)
+    redirect to "/videos/new_video" if params[:video].empty?
+    @video = Video.new(params[:video]) 
+    @video.user_id = current_user.id
     @video.save
+    @step = Step.new(params[:step])
+    @step.user_id = current_user.id
+    if @step.save
+      @step.videos << @video
+    end
     redirect to "/videos/#{@video.id}"
   end
 
 
   patch "/videos/:id" do
-    redirect to "/videos/#{params[:id]}/edit" if params["content"].empty?
+    binding.pry
     @video = Video.find(params[:id])
     if @video && (@video.user_id == current_user.id)
-      @video.update(content: params["content"])
-      @video.save
+      binding.pry
+      @video.update(params[:video])
+
+      if params[:step][:name] != "" 
+        @step = Step.new(params[:step])
+        @step.user_id = current_user.id
+        if @step.save
+          @video.steps << @step
+        end     
+      end
       redirect to "/videos/#{@video.id}"
     end
   end

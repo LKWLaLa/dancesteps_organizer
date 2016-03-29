@@ -1,0 +1,37 @@
+<h3>New Video:</h3>
+
+<form method="post" action="/videos">
+   <label for="video_title">Title:</label>
+  <input type="text" name="video[title]" id="video_title">
+   <label for="year">Year:</label>
+  <input type="text" name="video[year]" id="year"><br>
+  <label for="url">URL:</label>
+  <input type="text" name="video[url]" id="url"><br><br>
+  <label for="notes">Notes:</label>
+  <textarea name="video[notes]" id="notes" cols="30" rows="5"></textarea>
+
+
+   
+
+  <h4>Take note of a step from this video:</h4>
+
+  <label for="name">Step Name:</label>
+  <input type="text" name="step[name]" id="name"> <br><br>
+  <label for="level_of_mastery">Current level of mastery (1-10):</label>
+  <input type="text" name="step[level_of_mastery]" id="level_of_mastery" ><br>
+  <label for="notes">Notes:</label>
+  <textarea name="step[notes]" id="notes" cols="30" rows="5"></textarea>
+
+  <h4>Associate other steps from library that are in this video:</h4>
+
+  <% Step.all.each do |step| %>
+      <label><%= step.name %></label>
+      <input type="checkbox" id="<%=step.id%>" name="video[step_ids][]" value="<%= step.id %>"><br>
+    <% end %> <br><br>
+
+
+
+ 
+
+  <input type="submit" value="Add Video">
+</form>
