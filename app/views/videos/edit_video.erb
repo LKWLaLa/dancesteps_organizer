@@ -1,6 +1,7 @@
 <h3>Edit Video:</h3>
 
-<form method="post" action="/videos">
+<form method="post" action="/videos/<%=@video.id%>">
+   <input type="hidden" id="hidden" name="_method" value="PATCH">
    <label for="video_title">Title:</label>
   <input type="text" name="video[title]" id="video_title" value="<%=@video.title%>">
    <label for="year">Year:</label>

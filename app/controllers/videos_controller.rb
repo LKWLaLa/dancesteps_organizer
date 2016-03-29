@@ -54,10 +54,8 @@ class VideosController < ApplicationController
 
 
   patch "/videos/:id" do
-    binding.pry
     @video = Video.find(params[:id])
     if @video && (@video.user_id == current_user.id)
-      binding.pry
       @video.update(params[:video])
 
       if params[:step][:name] != "" 
