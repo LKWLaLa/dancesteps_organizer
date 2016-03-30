@@ -1,28 +1,35 @@
-<h3><%=@step.name%></h3>
-<h4>Current level of mastery: <%=@step.level_of_mastery%></h4>
+<div class="container">
+  <div class="panel panel-success">
+    <div class="panel-heading"><%=@step.name%></div>
+    <div class="panel-body">
+      Current level of mastery: <%=@step.level_of_mastery%><br>
 
-<p>Styles: <%@step.styles.each do |style|%>
+      Styles: <%@step.styles.each do |style|%>
 
-<li><%=style.name%></li>
+     <span class="label label-success"><%=style.name%></span>
 
-<%end%>
+      <%end%>
+      <br></br>
 
-</p>
+      
+  
+       <div class="col-sm-12 well">Notes:<br> <%=@step.notes%></div>
+      
 
-<p>
-<h4>Notes:</h4>
-  <%=@step.notes%>
-</p>
+        <h4>Video Clips:</h4>
+        <ol>
+        <%@step.videos.each do |video|%>        
+          <li><a href="/videos/<%=video.id%>"><%=video.title%> </a><%if !video.year.nil?%> (<%=video.year%>) <%end%> |   <a href="<%=video.url%>">Watch clip</a></li>
+        <%end%>
+        </ol>
 
-<p>
-  <h4>Video Clips:</h4>
-  <%@step.videos.each do |video|%>
-  <ol>
-    <li><a href="/videos/<%=video.id%>"><%=video.title%> </a><%if !video.year.nil?%> (<%=video.year%>) <%end%> | <a href="<%=video.url%>">Watch clip</a></li>
-  </ol>
-  <%end%>
+      
+     
 
-</p>
+      <button class="btn btn-warning">
+        <a href="/steps/<%=@step.id%>/edit" style="color: white; text-decoration: none;">Edit Step</a>
+      </button>
 
-<button><a href="/steps/<%=@step.id%>/edit">Edit Step</a>
-</button>
+    </div><!--panel body-->
+  </div> <!--panel-->
+</div><!--container-->

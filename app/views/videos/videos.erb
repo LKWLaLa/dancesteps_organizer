@@ -13,7 +13,7 @@
               <p class="col-sm-4">
                 <a href="<%=video.url%>">Watch Video Clip</a><br><br>
                 Styles:<br> <%video.styles.each do |style|%>
-                  | <%=style.name%>
+                  <span class="label label-warning"><%=style.name%></span>
                 <%end%><br><br>
                 Year: <%=video.year%><br>
               </p>

@@ -1,6 +1,6 @@
 
 <div class="container">
-  <button class="btn btn-primary navbar-btn heading">
+  <button class="btn btn-primary">
       <a href="/steps/new" style="color: white; text-decoration: none;">Add a New Step</a>
   </button>
     
@@ -16,7 +16,7 @@
               <p class="col-sm-4">
                 Styles:<br>
                  <%step.styles.each do |style|%>
-                | <%=style.name%>  
+                <span class="label label-info"><%=style.name%></span> 
                 <%end%><br><br>
                 Current level of mastery: <%=step.level_of_mastery%><br>
               </p>
