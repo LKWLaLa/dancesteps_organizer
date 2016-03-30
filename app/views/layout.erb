@@ -78,6 +78,10 @@
     </nav>
 
     <br><br><br><br>
+    <% unless locals.empty? %>
+        <div class="alert alert-success" role="alert"> <%= message %></div>
+    <% end %>
+
     <%=yield%>
 
     
