@@ -1,12 +1,19 @@
-<h3><%=current_user.username%>'s Videos:</h3>
+<button class="btn btn-primary navbar-btn heading">
+    <a href="/videos/new" style="color: white; text-decoration: none;">Add a New Video</a>
+</button>
 
-<ol>
+<h3 class="heading"><%=current_user.username%>'s videos:</h3>
+
 
 <%@videos.each do |video|%>
 
-  
-    <li>
+<span class="col-md-4">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+    
       <h4><a href="/videos/<%=video.id%>"><%=video.title%></a></h4>
+      </div>
+       <div class="panel-body">
       <p>
         <a href="<%=video.url%>">Watch Video Clip</a><br><br>
         Styles: <%video.styles.each do |style|%>
@@ -24,10 +31,11 @@
           <%end%>
         </ul>
       </p>
-
-    </li>
+    </div> <!--panel body-->
+  </div> <!--panel-->
+</span>
+    
 
 
   <%end%>
 
-  </ol>

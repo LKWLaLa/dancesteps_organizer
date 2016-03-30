@@ -1,32 +1,42 @@
-<h3><%=current_user.username%>'s Steps:</h3>
+<button class="btn btn-primary navbar-btn heading">
+    <a href="/steps/new" style="color: white; text-decoration: none;">Add a New Step</a>
+</button>
+  
 
-<ol>
+  <h3 class="heading"><%=current_user.username%>'s steps:</h3>
 
-<%@steps.each do |step|%>
+      <%@steps.each do |step|%>
+    
+       <span class="col-md-4">
+         <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4><a href="/steps/<%=step.id%>"><%=step.name%></a></h4>
+            </div>
+            <div class="panel-body">
+                <p>
+                  Styles:<br>
+                   <%step.styles.each do |style|%>
+                  | <%=style.name%>  
+                  <%end%><br><br>
+                  Current level of mastery: <%=step.level_of_mastery%><br>
+                  <div class="well">Notes:<br> <%=step.notes%></div>
+                </p>
+
+                <p>      
+                  Video Links:<br>
+                  <ul>
+                    <%step.videos.each do |video|%>
+                    <li><a href="<%=video.url%>"><%=video.title%></a></li>
+                    <%end%>
+                  </ul>
+                </p>
+            </div> <!--panel body-->
+        </div> <!--panel-->
+      </span>
+
+
+      <%end%>
 
   
-    <li>
-      <h4><a href="/steps/<%=step.id%>"><%=step.name%></a></h4>
-      <p>
-        Styles: <%step.styles.each do |style|%>
-        <%=style.name%>
-        <%end%>
-        Current level of mastery: <%=step.level_of_mastery%><br>
-        Notes: <%=step.notes%>
-      </p>
-
-      <p>      
-        Video Links:
-        <ul>
-          <%step.videos.each do |video|%>
-          <li><a href="<%=video.url%>"><%=video.title%></a></li>
-          <%end%>
-        </ul>
-      </p>
-
-    </li>
-
-
-  <%end%>
-
-  </ol>
+    
+  

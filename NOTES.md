@@ -48,6 +48,9 @@ Index page and home page.
 video year
 time marker
 Click to watch should open a new window
+users should only see their videos
+View page to sort by style
+Style controller?
 
 
 

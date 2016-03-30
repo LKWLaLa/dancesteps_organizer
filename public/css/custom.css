@@ -3,3 +3,10 @@
   background-size: cover;
   color: white;
 }
+
+.heading {
+  text-align: left;
+  padding-bottom: .5em;
+  color: gray;
+}
+
