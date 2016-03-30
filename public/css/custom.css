@@ -10,3 +10,9 @@
   color: gray;
 }
 
+  
+
+.col-md-4 well {
+  padding-right: 0;
+  border-right: 0;
+}

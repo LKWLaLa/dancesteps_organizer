@@ -1,41 +1,42 @@
-<button class="btn btn-primary navbar-btn heading">
+<div class="container">
+  <button class="btn btn-primary navbar-btn heading">
     <a href="/videos/new" style="color: white; text-decoration: none;">Add a New Video</a>
-</button>
+  </button>
 
-<h3 class="heading"><%=current_user.username%>'s videos:</h3>
+  <h3 class="heading"><%=current_user.username%>'s videos:</h3>
+    <ol>
+      <%@videos.each do |video|%>
+      <li>
+        <div class="panel panel-info">
+        <div class="panel-heading"><a href="/videos/<%=video.id%>"><%=video.title%></a></div>
+           <div class="panel-body">
+              <p class="col-sm-4">
+                <a href="<%=video.url%>">Watch Video Clip</a><br><br>
+                Styles:<br> <%video.styles.each do |style|%>
+                  | <%=style.name%>
+                <%end%><br><br>
+                Year: <%=video.year%><br>
+              </p>
 
+            <div class="col-sm-4 well">Notes:<br> <%=video.notes%></div>
+          
+            <div class="col-sm-4">     
+              Associated Steps:
+              <ul>
+                <%video.steps.each do |step|%>
+                  <li><a href="/steps/<%=step.id%>"><%=step.name%></a></li>
+                <%end%>
+              </ul>
+            </div>
 
-<%@videos.each do |video|%>
-
-<span class="col-md-4">
-  <div class="panel panel-info">
-    <div class="panel-heading">
-    
-      <h4><a href="/videos/<%=video.id%>"><%=video.title%></a></h4>
-      </div>
-       <div class="panel-body">
-      <p>
-        <a href="<%=video.url%>">Watch Video Clip</a><br><br>
-        Styles: <%video.styles.each do |style|%>
-        <%=style.name%>
-        <%end%>
-        Year: <%=video.year%><br>
-        Notes: <%=video.notes%>
-      </p>
-
-      <p>      
-        Associated Steps:
-        <ul>
-          <%video.steps.each do |step|%>
-          <li><a href="/steps/<%=step.id%>"><%=step.name%></a></li>
-          <%end%>
-        </ul>
-      </p>
-    </div> <!--panel body-->
-  </div> <!--panel-->
-</span>
-    
-
-
+        </div> <!--panel body-->
+      </div> <!--panel-->
+    </li>
   <%end%>
+  </ol>
+</div> <!--container-->
+ 
+
+
+    
 

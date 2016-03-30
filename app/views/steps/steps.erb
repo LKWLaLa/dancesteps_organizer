@@ -1,41 +1,44 @@
-<button class="btn btn-primary navbar-btn heading">
-    <a href="/steps/new" style="color: white; text-decoration: none;">Add a New Step</a>
-</button>
-  
 
-  <h3 class="heading"><%=current_user.username%>'s steps:</h3>
-
-      <%@steps.each do |step|%>
+<div class="container">
+  <button class="btn btn-primary navbar-btn heading">
+      <a href="/steps/new" style="color: white; text-decoration: none;">Add a New Step</a>
+  </button>
     
-       <span class="col-md-4">
-         <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4><a href="/steps/<%=step.id%>"><%=step.name%></a></h4>
-            </div>
-            <div class="panel-body">
-                <p>
-                  Styles:<br>
-                   <%step.styles.each do |style|%>
-                  | <%=style.name%>  
-                  <%end%><br><br>
-                  Current level of mastery: <%=step.level_of_mastery%><br>
-                  <div class="well">Notes:<br> <%=step.notes%></div>
-                </p>
 
-                <p>      
-                  Video Links:<br>
-                  <ul>
-                    <%step.videos.each do |video|%>
-                    <li><a href="<%=video.url%>"><%=video.title%></a></li>
-                    <%end%>
-                  </ul>
-                </p>
+    <h3 class="heading"><%=current_user.username%>'s steps:</h3>
+
+    <ol>
+      <%@steps.each do |step|%>
+        <li>   
+          <div class="panel panel-success">
+            <div class="panel-heading"><a href="/steps/<%=step.id%>"><%=step.name%></a></div>         <div class="panel-body">
+
+              <p class="col-sm-4">
+                Styles:<br>
+                 <%step.styles.each do |style|%>
+                | <%=style.name%>  
+                <%end%><br><br>
+                Current level of mastery: <%=step.level_of_mastery%><br>
+              </p>
+
+              <div class="col-sm-4 well">Notes:<br> <%=step.notes%></div>
+
+              <div class="col-sm-4">      
+                Video Links:<br>
+                <ul>
+                  <%step.videos.each do |video|%>
+                  <li><a href="<%=video.url%>"><%=video.title%></a></li>
+                  <%end%>
+                </ul>
+              </div>
+
             </div> <!--panel body-->
-        </div> <!--panel-->
-      </span>
-
-
+          </div> <!--panel-->  
+        </li>
       <%end%>
+   </ol>
+
+</div> <!--container-->
 
   
     
