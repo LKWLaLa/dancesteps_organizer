@@ -1,37 +1,37 @@
-<h3><%=@video.title%> <%if !@video.year.nil?%> (<%=@video.year%>) <%end%></h3>
+<div class="container">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <%=@video.title%> <%if !@video.year.nil?%> (<%=@video.year%>) <%end%>
+    </div>
+    <div class="panel-body">
+      <a href="<%=@video.url%>">Watch clip</a>
+      <br><br>
 
-<p><h4>Styles included:</h4>
-<%@video.styles.each do |style|%>
-  <li><%=style.name%></li>
-<%end%>
+      <div class="col-sm-12 well">Notes:<br> <%=@video.notes%></div>
 
-<h4><a href="<%=@video.url%>">Click to Watch</a></h4>
+      <h4>Associated steps:</h4>
+        <ol>
+          <%@video.steps.each do |step|%>
+            <li><a href="/steps/<%=step.id%>"><%=step.name%> </a><br>
+            Current level of mastery: <%=step.level_of_mastery%>
+              <ul>
+                <%step.styles.each do |style|%>
+                <span class="label label-primary"><%=style.name%></span>
+                <%end%><br><br>
+              </ul>
+            </li>
+          <%end%>
+        </ol>
 
-</p>
+      <button class="btn btn-warning">
+        <a href="/videos/<%=@video.id%>/edit" style="color: white; text-decoration: none;">
+          Edit Video Info
+        </a>
+      </button>
 
-<p>
-<h4>Notes:</h4>
-  <%=@video.notes%>
-</p>
+    </div><!--panel body-->
+  </div> <!--panel-->
+</div><!--container-->
 
-<p>
-  <h4>Steps:</h4>
-  <ol>
-    <%@video.steps.each do |step|%>
-    <li><a href="/steps/<%=step.id%>"><%=step.name%> </a><br>
-    Current level of mastery: <%=step.level_of_mastery%>
-      <ul>
-        <%step.styles.each do |style|%>
 
-        <li><%=style.name%></li>
-
-        <%end%>
-      </ul>
-    </li>
-    <%end%>
-  </ol>
-  
-
-</p>
-<button><a href="/videos/<%=@video.id%>/edit">Edit Video Info</a>
 
