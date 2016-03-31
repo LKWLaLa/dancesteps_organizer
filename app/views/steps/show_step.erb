@@ -21,11 +21,11 @@
         <%@step.videos.each do |video|%>        
           <li>
             <a href="/videos/<%=video.id%>"><%=video.title%> </a><%if !video.year.nil?%> (<%=video.year%>) <%end%> <br>
-            <a href="<%=video.url%>" target="_blank">
+            <a href="<%=video.url%>" target="_blank" style="text-decoration: none;">
               <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
               Watch clip
             </a>
-          </li>
+          </li><br>
         <%end%>
         </ol><br>      
      

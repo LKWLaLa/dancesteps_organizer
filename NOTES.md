@@ -42,7 +42,6 @@ Can't deselect video and disassociate it from step.
 Want to change id to slug?
 CLEAN UP controller code.
 time marker column?
-Click to watch should open a new window
 users should only see their videos
 View page to sort by style
 Style controller?
