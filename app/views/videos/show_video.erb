@@ -4,7 +4,12 @@
       <%=@video.title%> <%if !@video.year.nil?%> (<%=@video.year%>) <%end%>
     </div>
     <div class="panel-body">
-      <a href="<%=@video.url%>">Watch clip</a>
+
+        <a href="<%=@video.url%>" target="_blank" style="text-decoration: none;">
+          <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+          Watch video clip
+        </a>
+      
       <br><br>
 
       <div class="col-sm-12 well">Notes:<br> <%=@video.notes%></div>

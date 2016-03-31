@@ -40,18 +40,13 @@ To fix/add:
 
 Can't deselect video and disassociate it from step.
 Want to change id to slug?
-Need links for navigation between pages.
-Video views and controller
 CLEAN UP controller code.
-CSS for all pages.
-Index page and home page.
-video year
-time marker
+time marker column?
 Click to watch should open a new window
 users should only see their videos
 View page to sort by style
 Style controller?
-Why did my error messages dissappear?
+Additional error messages
 
 
 

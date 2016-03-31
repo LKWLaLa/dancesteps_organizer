@@ -19,11 +19,15 @@
         <h4>Video Clips:</h4>
         <ol>
         <%@step.videos.each do |video|%>        
-          <li><a href="/videos/<%=video.id%>"><%=video.title%> </a><%if !video.year.nil?%> (<%=video.year%>) <%end%> |   <a href="<%=video.url%>">Watch clip</a></li>
+          <li>
+            <a href="/videos/<%=video.id%>"><%=video.title%> </a><%if !video.year.nil?%> (<%=video.year%>) <%end%> <br>
+            <a href="<%=video.url%>" target="_blank">
+              <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+              Watch clip
+            </a>
+          </li>
         <%end%>
-        </ol>
-
-      
+        </ol><br>      
      
 
       <button class="btn btn-warning">
