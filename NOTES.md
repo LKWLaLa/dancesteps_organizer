@@ -43,7 +43,7 @@ Want to change id to slug?
 CLEAN UP controller code.
 time marker column?
 users should only see their videos
-View page to sort by style
+View page to sort by style?
 Style controller?
 Additional error messages
 

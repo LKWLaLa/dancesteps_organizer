@@ -19,6 +19,7 @@ class StepsController < ApplicationController
 
   get "/steps/:id" do
     if logged_in?
+      
       @step = Step.find(params[:id])
       erb :"steps/show_step"
     else
