@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       @current_user = current_user
       erb :'users/show'
     else
-      redirect to '/login'
+       erb :'/users/login', locals: {message: "You must be logged in to view this content."}
     end
   end
 
@@ -52,9 +52,7 @@ class UsersController < ApplicationController
     else
       erb :'users/login', locals: {message: "Oops! Please enter a valid username and password to log in."}
     end
-  end
-
-  
+  end 
 
 
 

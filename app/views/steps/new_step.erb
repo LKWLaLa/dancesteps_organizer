@@ -48,7 +48,7 @@
 
       <div class="row">
       <h4>Associate other video clips from library:</h4>
-        <% Video.all.each do |video| %>
+        <% current_user.videos.each do |video| %>
           <label class="checkbox-inline no_indent" for="<%=video.id%>">
           <input type="checkbox" id="<%=video.id%>" name="step[video_ids][]" value="<%= video.id %>"
           ><%= video.title %></input><br>

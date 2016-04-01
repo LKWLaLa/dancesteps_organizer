@@ -7,7 +7,7 @@
 
 
 
-Step - time_marker, name, level of mastery, notes, user_id
+Step - name, level of mastery, notes, user_id
 Video - url, title, year, notes, user_id
 Style - name
 User - username, password_digest
@@ -38,14 +38,8 @@ video has many styles through steps
 
 To fix/add:
 
-Can't deselect video and disassociate it from step.
-Want to change id to slug?
-CLEAN UP controller code.
-time marker column?
-users should only see their videos
-View page to sort by style?
-Style controller?
-Additional error messages
+Ability to add new style?
+
 
 
 

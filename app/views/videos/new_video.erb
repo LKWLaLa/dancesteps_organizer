@@ -43,7 +43,7 @@
 
     <div class="row">
       <h4>Steps currently associated with this video:</h4>    
-      <% Step.all.each do |step| %>
+      <% current_user.steps.each do |step| %>
         <label class="checkbox-inline no_indent" for="<%=step.id%>">      
         <input type="checkbox" id="<%=step.id%>" name="video[step_ids][]" value="<%= step.id %>"> <%= step.name %></input><br>
         </label>      
