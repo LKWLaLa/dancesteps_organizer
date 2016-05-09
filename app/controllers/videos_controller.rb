@@ -19,8 +19,8 @@ class VideosController < ApplicationController
 
   get "/videos/:id" do
     redirect to "/login" if !logged_in? 
-    @video = Video.find_by_id(params[:id])
-    if @video && (@video.user_id == current_user.id)
+    @video = current_user.videos.find_by(id: params[:id])
+    if @video 
       erb :"videos/show_video"
     else 
       erb :index, locals: {message: "You must be the video owner in order to access."}  
@@ -30,8 +30,8 @@ class VideosController < ApplicationController
 
   get "/videos/:id/edit" do
     redirect to "/login" if !logged_in? 
-    @video = Video.find_by_id(params[:id])
-    if @video && (@video.user_id == current_user.id)
+    @video = current_user.videos.find_by(id: params[:id])
+    if @video 
       erb :"videos/edit_video"
     else
       erb :"index", locals: {message: "You must be the video owner in order to access."}  
@@ -40,11 +40,11 @@ class VideosController < ApplicationController
   
 
   post "/videos" do
-    if !params[:video][:title].empty? && !params[:video][:url].empty?
+    if video_has_title_and_url?
       @video = Video.new(params[:video]) 
       @video.user_id = current_user.id
-    
-      if !params[:step][:name].empty?
+
+      if step_has_name?    
         @step = Step.new(params[:step])
         @step.user_id = current_user.id
         @video.steps << @step
@@ -58,13 +58,13 @@ class VideosController < ApplicationController
 
 
   patch "/videos/:id" do
-    @video = Video.find(params[:id])
-    if @video && (@video.user_id == current_user.id)
-      if !params[:video][:title].empty? && !params[:video][:url].empty?
+    @video = current_user.videos.find_by(id: params[:id])
+    if @video 
+      if video_has_title_and_url?
         params[:video][:step_ids] ||= []
         @video.update(params[:video])
-     
-        if !params[:step][:name].empty?
+
+        if step_has_name?     
           @step = Step.new(params[:step])
           @step.user_id = current_user.id
           @video.steps << @step
@@ -80,9 +80,8 @@ class VideosController < ApplicationController
 
   delete "/videos/:id/delete" do
     redirect to "/login" if !logged_in? 
-    @video = Video.find_by_id(params[:id])
-    if @video && (@video.user_id == current_user.id)
-      @video.delete
+    @video = current_user.videos.find_by(id: params[:id])
+    if @video && @video.delete
       redirect to '/videos'
     else
       erb :"index", locals: {message: "You do not have permission to delete this video."}

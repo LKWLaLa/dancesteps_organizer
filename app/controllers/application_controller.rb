@@ -30,6 +30,14 @@ class ApplicationController < Sinatra::Base
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
 
+    def step_has_name?
+      params[:step][:name].present?
+    end
+
+    def video_has_title_and_url?
+      params[:video][:title].present? && params[:video][:url].present?
+    end
+
   end
  
 
