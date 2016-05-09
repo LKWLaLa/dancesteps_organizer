@@ -40,12 +40,10 @@ class StepsController < ApplicationController
 
   post "/steps" do
     if step_has_name?
-      @step = Step.new(params[:step]) 
-      @step.user_id = current_user.id
+      @step = current_user.steps.build(params[:step]) 
      
       if video_has_title_and_url?
-        @video = Video.new(params[:video])
-        @video.user_id = current_user.id
+        @video = current_user.videos.build(params[:video]) 
         @step.videos << @video
       end
       @step.save
@@ -63,8 +61,7 @@ class StepsController < ApplicationController
         @step.update(params[:step])
 
         if video_has_title_and_url?
-          @video = Video.new(params[:video])
-          @video.user_id = current_user.id
+          @video = current_user.videos.build(params[:video]) 
           @step.videos << @video
           @step.save
         end  
